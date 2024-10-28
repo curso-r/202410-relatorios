@@ -1,0 +1,31 @@
+---
+title: "Relatório"
+author: "Fernando"
+date: "2024-10-21"
+output:
+  html_document:
+    toc: true
+---
+
+# Introdução
+
+Neste trabalho vamos analisar a base de dados starwars do pacote tidyverse.
+
+## Sobre os dados
+
+A base contém dados de vários personagens de star wars e está disponivel publicamente no pacote tidyverse. Abaixo apresentamos algumas estatísticas.
+
+# Análises
+
+## Analisando a altura
+
+O gráfico abaixo exibe um histograma da altura dos personagens da base.
+
+```{r histograma altura, echo=FALSE, fig.height=3, fig.width=6, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+starwars |> 
+  ggplot(aes(x = height)) + 
+  geom_histogram()
+```
+

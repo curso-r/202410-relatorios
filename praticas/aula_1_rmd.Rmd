@@ -1,0 +1,46 @@
+---
+title: "Meu relatório"
+author: "Fernando"
+date: "2024-10-21"
+output:
+  html_document:
+    toc: true
+---
+
+# Titulo grande
+
+## Titulo medio
+
+### Titulo pequeno
+
+#### titulos ainda menores
+
+-   [ ] Colocar texto
+
+Isso é um parágrafo
+
+Listas
+
+-   ponto um
+-   ponto dois
+-   ponto tres
+
+Listas numeradas
+
+1.  Primeiro
+2.  Segundo
+3.  Terceiro
+
+```{r}
+print("oi")
+```
+
+-   Ctrl + Shift + I é um atalho pra criar chunks:
+
+```{r grafico-1, echo=FALSE, error=FALSE, fig.height=3, fig.width=6, fig.align='center', message=FALSE, warning=FALSE}
+library(tidyverse)
+
+starwars |> 
+  ggplot(aes(x = mass)) + 
+  geom_histogram()
+```

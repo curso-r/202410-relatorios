@@ -1,0 +1,97 @@
+---
+title: "Meu relatório"
+author: "Fernando"
+date: "2024-10-21"
+format:
+  docx:
+    reference-doc: "referencia.docx"
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(tidyverse)
+# carrega a base de dados starwars
+
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  error = FALSE,
+  fig.height=3,
+  fig.width=6,
+  fig.align = "center"
+  )
+
+kable2 <- function(...){
+  kable(
+    ...,
+    align = "c",
+    digits = 2,
+    format.args = list(
+      decimal.mark = ",",
+      big.mark = "."), 
+    col.names = c(
+      "Número de personagens",
+      "Altura média (cm)",
+      "Peso médio (kg)"))
+}
+
+```
+
+# Introdução
+
+Neste trabalho vamos analisar a base de dados ***starwars*** do pacote tidyverse.
+
+## Sobre os dados
+
+A base contém dados de vários personagens de star wars e está disponivel publicamente no pacote tidyverse. Ela possui `r nrow(starwars)` linhas e `r ncol(starwars)` colunas. Abaixo apresentamos algumas estatísticas.
+
+```{r}
+library(tidyverse)
+
+starwars |> 
+  summarise(
+    numero_personagens = n(),
+    altura_media = mean(height, na.rm = TRUE),
+    peso_medio = mean(mass, na.rm = TRUE)
+  ) |> 
+  kable2(
+    caption = "Estatísticas básicas da base starwars."
+  )
+```
+
+# Análises
+
+## Analisando a altura
+
+O gráfico abaixo exibe um histograma da altura dos personagens da base.
+
+```{r histograma-altura, echo=FALSE, fig.height=3, fig.width=6, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+starwars |> 
+  ggplot(aes(x = height)) + 
+  geom_histogram()
+```
+
+## Analisando o peso
+
+O gráfico abaixo exibe um histograma do peso dos personagens da base.
+
+```{r histograma-peso, echo=FALSE, fig.height=3, fig.width=6, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+starwars |> 
+  ggplot(aes(x = mass)) + 
+  geom_histogram()
+```
+
+Outro texto...
+
+Será que fica bom?
+
+![Serie temporal das alturas](minha_imagem.png){width="5in" height="3in"}
+
+## Fórmulas matemáticas
+
+$$f(x) = x^2+2x+1$$
