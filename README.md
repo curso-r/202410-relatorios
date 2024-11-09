@@ -52,8 +52,31 @@ Fora do horário de aula ou monitoria:
 
 ## Práticas
 
-| Exemplo |
-|:--------|
+| Exemplo                                                                                               |
+|:------------------------------------------------------------------------------------------------------|
+| [aula_1.html](https://curso-r.github.io/202410-relatorios/praticas/aula_1.html)                       |
+| [aula_1_files](https://curso-r.github.io/202410-relatorios/praticas/aula_1_files)                     |
+| [aula_1_qmd.docx](https://curso-r.github.io/202410-relatorios/praticas/aula_1_qmd.docx)               |
+| [aula_1_qmd.html](https://curso-r.github.io/202410-relatorios/praticas/aula_1_qmd.html)               |
+| [aula_1_qmd.pdf](https://curso-r.github.io/202410-relatorios/praticas/aula_1_qmd.pdf)                 |
+| [aula_1_qmd.qmd](https://curso-r.github.io/202410-relatorios/praticas/aula_1_qmd.qmd)                 |
+| [aula_1_qmd_files](https://curso-r.github.io/202410-relatorios/praticas/aula_1_qmd_files)             |
+| [aula_1_qmd_pdf.html](https://curso-r.github.io/202410-relatorios/praticas/aula_1_qmd_pdf.html)       |
+| [aula_1_qmd_pdf.pdf](https://curso-r.github.io/202410-relatorios/praticas/aula_1_qmd_pdf.pdf)         |
+| [aula_1_qmd_pdf.pptx](https://curso-r.github.io/202410-relatorios/praticas/aula_1_qmd_pdf.pptx)       |
+| [aula_1_qmd_pdf.qmd](https://curso-r.github.io/202410-relatorios/praticas/aula_1_qmd_pdf.qmd)         |
+| [aula_1_qmd_pdf_files](https://curso-r.github.io/202410-relatorios/praticas/aula_1_qmd_pdf_files)     |
+| [aula_1_rmd.Rmd](https://curso-r.github.io/202410-relatorios/praticas/aula_1_rmd.Rmd)                 |
+| [aula_1_rmd.html](https://curso-r.github.io/202410-relatorios/praticas/aula_1_rmd.html)               |
+| [aula_2](https://curso-r.github.io/202410-relatorios/praticas/aula_2)                                 |
+| [aula_2_qmd_pdf.pdf](https://curso-r.github.io/202410-relatorios/praticas/aula_2_qmd_pdf.pdf)         |
+| [aula_2_qmd_pdf.pptx](https://curso-r.github.io/202410-relatorios/praticas/aula_2_qmd_pdf.pptx)       |
+| [aula_2_qmd_pdf.qmd](https://curso-r.github.io/202410-relatorios/praticas/aula_2_qmd_pdf.qmd)         |
+| [aula_3](https://curso-r.github.io/202410-relatorios/praticas/aula_3)                                 |
+| [minha_imagem.png](https://curso-r.github.io/202410-relatorios/praticas/minha_imagem.png)             |
+| [referencia.docx](https://curso-r.github.io/202410-relatorios/praticas/referencia.docx)               |
+| [relatorio_exemplo.Rmd](https://curso-r.github.io/202410-relatorios/praticas/relatorio_exemplo.Rmd)   |
+| [relatorio_exemplo.html](https://curso-r.github.io/202410-relatorios/praticas/relatorio_exemplo.html) |
 
 ## Lição de casa
 
