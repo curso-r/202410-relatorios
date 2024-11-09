@@ -1,0 +1,81 @@
+---
+title: "Relatório parametrizado"
+author: "Fernando Corrêa"
+data: "2024-11-04"
+lang: pt
+format:
+  html:
+    embed-resources: true
+knitr:
+  opts_chunk:
+    echo: false
+    erro: false
+    warning: false
+    message: false
+params:
+  data_minima: "2024-10-01"
+  data_maxima: "2024-10-31"
+  incluir_grafico_retornos: true
+---
+
+
+```{r}
+library(tidyverse)
+library(rbcb)
+
+ggplot2::theme_set(
+  theme_minimal()
+)
+
+```
+
+```{r}
+dados <- get_currency("USD",params$data_minima, params$data_maxima)
+```
+
+# Relatório sobre o dolar
+
+## Resumo atual
+
+```{r}
+variacoes_diarias <- dados |> 
+  arrange(date) |> 
+  mutate(
+    retorno = bid/lag(bid)-1
+  )
+
+data_ref <- max(dados$date)
+valor_referencia <- dados |> 
+  filter(date == data_ref) |>
+  pull(bid)
+
+variacao_diaria <- variacoes_diarias |>
+  filter(date == data_ref) |> 
+  pull(retorno)
+```
+
+
+- Período de referência: Entre `r params$data_minima` e `r params$data_maxima`
+- Último dia registrado na base: `r data_ref`
+- Valor em `r data_ref`: `r valor_referencia`
+- Variação no último dia: `r variacao_diaria`
+
+## Série histórica
+
+```{r}
+dados |> 
+  ggplot(aes(x = date, y = bid)) + 
+  geom_line() 
+```
+
+```{r, include = params$incluir_grafico_retornos, results='asis'}
+cat('<h2>Série de retornos</h2>')
+```
+
+
+```{r, include = params$incluir_grafico_retornos}
+variacoes_diarias |> 
+  ggplot(aes(x = date, y = retorno)) + 
+  geom_point()
+```
+

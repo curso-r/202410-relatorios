@@ -1,0 +1,44 @@
+---
+title: "Relatório de análise: Pinguins da Ilha de Palmer"
+date: "2024-11-04"
+format:
+  html:
+    theme:
+      lux
+knitr:
+  opts_chunk:
+    echo: FALSE
+    message: FALSE
+    warning: FALSE
+    error: FALSE
+lang: pt
+---
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(dados)
+```
+
+# Introdução
+
+Neste relatório vamos analisar o banco de dados sobre pinguins na ilha de Palmer do pacote `dados`. Abaixo estão as 5 primeiras linhas dessa tabela:
+
+```{r}
+pinguins |> 
+  head(5) |> 
+  kable()
+```
+
+# Análises
+
+Nesta seção vamos analisar os pontos mais importantes da nossa base.
+
+## Comprimento da nadadeira
+
+```{r}
+pinguins |> 
+  ggplot(aes(x = comprimento_nadadeira)) + 
+  geom_histogram()
+```
+

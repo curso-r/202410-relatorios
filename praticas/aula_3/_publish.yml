@@ -1,0 +1,6 @@
+- source: html_auto_contido.qmd
+  quarto-pub:
+    - id: a79fe7e1-eb7b-4ec6-a115-e11f907bcf70
+      url: 'https://azeloc.quarto.pub/relatório-de-análise-pinguins-da-ilha-de-palmer'
+    - id: bed7e1b7-b404-46ca-ac3f-75f0b08b1444
+      url: 'https://azeloc.quarto.pub/pagina'
