@@ -1,0 +1,54 @@
+---
+title: "Exemplo de shiny"
+format: html
+server: shiny
+---
+
+```{r}
+#| context: setup
+#| include: false
+
+library(tidyverse)
+
+dados <- dados::dados_starwars
+```
+
+```{r}
+#| panel: input
+#| title: "Filtro"
+#| layout-ncol: 3
+
+shiny::sliderInput(
+  "altura_max",
+  "Altura máxima",
+  min = 0,
+  max = 300,
+  value = 200
+)
+
+shiny::sliderInput(
+  "faixa_histograma",
+  "Number of bins:",
+  min = 0,
+  max = 50,
+  value = 30
+)
+```
+
+```{r}
+#| panel: center
+plotOutput("distPlot")
+```
+
+```{r}
+#| context: server
+
+output$distPlot <- renderPlot({
+  dados |> 
+    filter(altura < input$altura_max) |> 
+    ggplot(aes(x = altura)) + 
+    geom_histogram(bins = input$faixa_histograma)
+})
+```
+
+

@@ -1,0 +1,98 @@
+---
+title: "Relatório parametrizado"
+author: "Fernando Corrêa"
+data: "2024-11-04"
+output:
+  pagedown::
+params:
+  data_minima: "2024-10-01"
+  data_maxima: "2024-10-31"
+  incluir_grafico_retornos: true
+---
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  error = FALSE, warning = FALSE, message = FALSE, echo = FALSE,
+  dpi = 300
+)
+
+library(tidyverse)
+library(rbcb)
+
+ggplot2::theme_set(
+  theme_minimal()
+)
+
+perc <- scales::percent_format(
+  accuracy = 0.01,
+  decimal.mark = ",",
+  big.mark = ".")
+# percent_format cria uma função, chamada perc, que quando receber um 
+# numero vai devolver um texto com %
+# perc(0.1225)
+# 12,25%
+
+din <- scales::dollar_format(
+  accuracy = 0.01, decimal.mark = ",",
+  big.mark = ".", prefix = "R$ "
+)
+#din(1.5123)
+
+dat <- scales::date_format("%d/%m/%Y")
+
+```
+
+```{r}
+dados <- get_currency("USD",params$data_minima, params$data_maxima)
+```
+
+# Relatório sobre o dolar
+
+## Resumo atual
+
+```{r}
+variacoes_diarias <- dados |> 
+  arrange(date) |> 
+  mutate(
+    retorno = bid/lag(bid)-1
+  )
+
+data_ref <- max(dados$date)
+valor_referencia <- dados |> 
+  filter(date == data_ref) |>
+  pull(bid)
+
+variacao_diaria <- variacoes_diarias |>
+  filter(date == data_ref) |> 
+  pull(retorno)
+```
+
+
+- Período de referência: Entre `r dat(as.Date(params$data_minima))` e `r dat(as.Date(params$data_maxima))`
+- Último dia registrado na base: `r dat(data_ref)`
+- Valor em `r dat(data_ref)`: `r din(valor_referencia)`
+- Variação no último dia: `r perc(variacao_diaria)`
+
+## Série histórica
+
+```{r}
+dados |> 
+  ggplot(aes(x = date, y = bid)) + 
+  geom_line() +
+  scale_y_continuous(labels = din) +
+  scale_x_date(labels = dat) +
+  labs(x = "Data de referência", y = "Valor do Dolar (R$)")
+```
+
+# Série de retornos
+
+```{r, include = params$incluir_grafico_retornos}
+variacoes_diarias |> 
+  ggplot(aes(x = date, y = retorno)) + 
+  geom_point() +
+  scale_y_continuous(labels = perc) +
+  scale_x_date(labels = dat) + 
+  labs(x = "Data de referência", y = "Retorno diário (%)")
+```
+

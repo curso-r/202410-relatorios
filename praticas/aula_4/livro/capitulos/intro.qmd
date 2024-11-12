@@ -1,0 +1,12 @@
+# Introduction
+
+This is a book created from markdown and executable code.
+
+See @knuth84 for additional discussion of literate programming. As Figuras podem ser referenciadas como @fig-histograma
+
+```{r}
+#| label: fig-histograma
+#| fig-cap: "Histograma"
+
+hist(rnorm(1000))
+```

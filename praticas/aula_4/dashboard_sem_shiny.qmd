@@ -1,0 +1,113 @@
+---
+title: "Dashboard"
+author: "Curso-R"
+format:
+  dashboard:
+    logo: https://curso-r.com/images/logo_col_branco.webp
+    scrolling: false
+    theme: sandstone
+---
+
+```{r, include = FALSE}
+
+library(tidyverse)
+library(dados)
+library(shiny)
+
+num <- scales::comma_format(accuracy = 0.01,
+                            big.mark = ".",
+                            decimal.mark = ",")
+
+```
+
+# Introdução
+
+## tripa
+
+```{r}
+#| content: valuebox
+#| title: "Altura média"
+#| color: primary
+num(mean(dados_starwars$altura, na.rm = TRUE))
+```
+
+```{r}
+#| content: valuebox
+#| title: "Massa média"
+#| color: primary
+num(mean(dados_starwars$massa, na.rm = TRUE))
+```
+
+```{r}
+#| content: valuebox
+#| title: "Total de personagens da base"
+#| color: danger
+num(nrow(dados_starwars))
+```
+
+## Row {height=50%}
+
+```{r}
+#| title: Gráfico de dispersão Altura Vs. Massa
+dados_starwars |> 
+  ggplot(aes(x = altura, y = massa)) + 
+  geom_point()
+```
+
+```{r}
+#| title: Gráfico de dispersão Altura Vs. Ano de Nascimento
+dados_starwars |> 
+  ggplot(aes(x = altura, y = ano_nascimento)) + 
+  geom_point()
+```
+
+## Row {height=50%}
+
+```{r}
+#| title: Histogramas de massa e altura
+#| layout-ncol: 2
+dados_starwars |> 
+  ggplot(aes(x = altura)) + 
+  geom_histogram()
+
+dados_starwars |> 
+  ggplot(aes(x = massa)) + 
+  geom_histogram()
+```
+
+# Sobre o Dashboards
+
+::: {.card title='Sobre a base de dados'}
+
+Este dashboard exibe visualizações sobre a base `starwars` do pacote `dados`.
+
+:::
+
+## Row
+
+### {.sidebar}
+
+
+```{r}
+shiny::sliderInput(
+  "altura_max2",
+  "Altura máxima",
+  min = 0,
+  max = 200,
+  value = 100
+)
+```
+
+::: {.card title="Filtros"}
+
+Abaixo você pode alterar as variaveis do que está sendo exibido no gráfico.
+
+:::
+
+## Row
+
+```{r}
+leaflet::leaflet() |> 
+  leaflet::addTiles()
+```
+
